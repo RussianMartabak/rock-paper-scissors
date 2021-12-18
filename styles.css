@@ -1,0 +1,15 @@
+body{
+    display:flex;
+    font-family: 'Rubik', sans-serif;
+    height : 90vh;
+    justify-content: center;
+    align-items: center;
+}
+body h1,
+body p {
+    text-align: center;
+}
+
+body h1 {
+    font-size: 44px;
+}
