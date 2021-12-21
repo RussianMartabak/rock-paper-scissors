@@ -3,7 +3,9 @@ const tools = ['rock', 'paper', 'scissors']
 let computerScore = 0;
 let playerScore = 0;
 let games = 0;
-
+let cards = document.querySelectorAll('.card-group__card');
+cards.forEach(card => card.addEventListener('click', (e) => console.log(playRound(computerPlay(), card.getAttribute('id')))))
+//card.addEventListener('click', playRound(computerPlay(), card)
 
 
 
