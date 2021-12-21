@@ -1,9 +1,11 @@
 const tools = ['rock', 'paper', 'scissors']
+//global variable
+let computerScore = 0;
+let playerScore = 0;
+let games = 0;
 
 
 
-
-game()
 
 function computerPlay() {
     let rand = Math.floor(Math.random() * 3)

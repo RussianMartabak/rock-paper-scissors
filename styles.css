@@ -9,11 +9,38 @@ body{
     
     
 }
-
+body > h2 {
+    text-align: center;
+}
 .score-box{
     display: flex;
     justify-content: center;
-    flex: 1;
+    
     gap: 80px;
     text-align: center;
+}
+.card-group{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 48px;
+}
+.card-group__card{
+    margin-top: 32px;
+    border: solid 1px black;
+    display: inline-block;
+    height: 225px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.5);
+}
+.card-group__card:hover{
+    margin-top: 0px;
+    cursor: pointer;
+}
+img{
+    height: 135px;
+    width: 90px;
 }
