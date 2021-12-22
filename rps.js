@@ -17,6 +17,11 @@ function computerPlay() {
 }
 
 function playRound(computerSelection, playerSelection) {
+    games += 1;
+    if (isGameOver()) {
+        alert('Game Over Bitch!');
+        return
+    }
     const status = document.querySelector('#status');
     const playerScoreDiv = document.querySelector('#user-score');
     if (computerSelection === playerSelection) {
@@ -30,7 +35,7 @@ function playRound(computerSelection, playerSelection) {
                 status.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
                 return;
             case 'paper':
-                playerScore += 1
+                playerScoreDiv.textContent = playerScore += 1;
                 status.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
                 return;
         }
@@ -38,7 +43,9 @@ function playRound(computerSelection, playerSelection) {
     else if (computerSelection == 'paper') {
         switch (playerSelection) {
             case 'scissors':
-                return `You win! ${playerSelection} beats ${computerSelection}`
+                playerScoreDiv.textContent = playerScore += 1;
+                status.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                break;
             case 'rock':
                 computerScore += 1;
                 document.querySelector('#cpu-score').textContent = computerScore; 
@@ -49,7 +56,9 @@ function playRound(computerSelection, playerSelection) {
     else if (computerSelection == 'scissors') {
         switch (playerSelection) {
             case 'rock':
-                return `You win! ${playerSelection} beats ${computerSelection}`
+                playerScoreDiv.textContent = playerScore += 1;
+                status.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                break;
             case 'paper':
                 computerScore += 1;
                 document.querySelector('#cpu-score').textContent = computerScore; 
@@ -58,22 +67,12 @@ function playRound(computerSelection, playerSelection) {
         }
     }
 }
+function isGameOver(){
+    return (games >= 5 ? true : false) 
+}
 
-function game() {
-    let computerScore = 0
-    let playerScore = 0
-    for (let rounds = 0; rounds < 5; rounds++) {
-        let playerInput = prompt("Rock, Paper or Scissors?")
-        playerInput.toLowerCase
-        let computerInput = computerPlay()
-        let result = playRound(computerInput, playerInput)
-        console.log(result)
-        if (result.substring(0, 8) === 'You win!') {
-            playerScore++
-        } else if (result.substring(0, 8) === 'You lose') {
-            computerScore++
-        }
-    }
+function evalWinner() {
+    
     if (computerScore < playerScore) {
         console.log(`Congratulations! You won with the score of ${playerScore} - ${computerScore}`)
     } else if (playerScore < computerScore) {
