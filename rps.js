@@ -19,8 +19,8 @@ function computerPlay() {
 function playRound(computerSelection, playerSelection) {
     games += 1;
     if (isGameOver()) {
-        alert('Game Over Bitch!');
-        return
+        alert(evalWinner());
+        return;
     }
     const status = document.querySelector('#status');
     const playerScoreDiv = document.querySelector('#user-score');
@@ -74,10 +74,11 @@ function isGameOver(){
 function evalWinner() {
     
     if (computerScore < playerScore) {
-        console.log(`Congratulations! You won with the score of ${playerScore} - ${computerScore}`)
+        return `Congratulations! You won! You beat the computer`;
     } else if (playerScore < computerScore) {
-        console.log(`Damnit, you lost to the computer with the score of ${computerScore} - ${playerScore}`)
+        return `Damnit, you lost to the computer. You can try again by refreshing the website`; 
     } else {
-        console.log(`Tie! ${computerScore} - ${playerScore}`)
+        return `It\'s a tie!`;
     }
+
 }
