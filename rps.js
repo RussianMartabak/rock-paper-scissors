@@ -3,6 +3,7 @@ const tools = ['rock', 'paper', 'scissors']
 let computerScore = 0;
 let playerScore = 0;
 let games = 0;
+
 let cards = document.querySelectorAll('.card-group__card');
 cards.forEach(card => card.addEventListener('click', (e) => console.log(playRound(computerPlay(), card.getAttribute('id')))))
 //card.addEventListener('click', playRound(computerPlay(), card)
@@ -16,17 +17,22 @@ function computerPlay() {
 }
 
 function playRound(computerSelection, playerSelection) {
+    const status = document.querySelector('#status');
+    const playerScoreDiv = document.querySelector('#user-score');
     if (computerSelection === playerSelection) {
-        return `${computerSelection} and ${playerSelection}. It's a tie!`
+        status.textContent = `${computerSelection} and ${playerSelection}. It's a tie!`
     }
     else if (computerSelection == 'rock') {
         switch (playerSelection) {
             case 'scissors':
-                return `You lose! ${computerSelection} beats ${playerSelection}`
-                break;
+                computerScore += 1;
+                document.querySelector('#cpu-score').textContent = computerScore; 
+                status.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
+                return;
             case 'paper':
-                return `You win! ${playerSelection} beats ${computerSelection}`
-                break;
+                playerScore += 1
+                status.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                return;
         }
     }
     else if (computerSelection == 'paper') {
@@ -34,7 +40,10 @@ function playRound(computerSelection, playerSelection) {
             case 'scissors':
                 return `You win! ${playerSelection} beats ${computerSelection}`
             case 'rock':
-                return `You lose! ${computerSelection} beats ${playerSelection}`
+                computerScore += 1;
+                document.querySelector('#cpu-score').textContent = computerScore; 
+                status.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+                break;
         }
     }
     else if (computerSelection == 'scissors') {
@@ -42,7 +51,10 @@ function playRound(computerSelection, playerSelection) {
             case 'rock':
                 return `You win! ${playerSelection} beats ${computerSelection}`
             case 'paper':
-                return `You lose! ${computerSelection} beats ${playerSelection}`
+                computerScore += 1;
+                document.querySelector('#cpu-score').textContent = computerScore; 
+                status.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+                break;
         }
     }
 }
